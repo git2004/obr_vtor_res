@@ -55,7 +55,7 @@
     <p>
        <a href="https://git2004.github.io/rvps_lb2/">На главную</a>
     </p>
-    <form>
+    <form id="resourceForm">
         <label for="resource-name">Наименование ресурса:</label>
         <input type="text" id="resource-name" name="resource-name" placeholder="Введите наименование ресурса">
 
@@ -75,6 +75,33 @@
         ОАО "ТрансОйл"<br>
         Служба технической поддержки +7 (929) 721-35-97
     </footer>
+
+    <script>
+        const form = document.getElementById('resourceForm');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Предотвращаем отправку формы по умолчанию
+
+            const resourceName = document.getElementById('resource-name').value;
+            const resourceVolume = document.getElementById('resource-volume').value;
+            const collectionPlace = document.getElementById('collection-place').value;
+            const hazardClass = document.getElementById('hazard-class').value;
+
+           const textData = `Наименование ресурса: ${resourceName}\nОбъем ресурса: ${resourceVolume}\nМесто сбора: ${collectionPlace}\nКласс опасности: ${hazardClass}`;
+
+            // Создаем элемент <a> для скачивания
+            const downloadLink = document.createElement('a');
+            downloadLink.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(textData);
+            downloadLink.download = 'resource_data.txt';
+
+            // Добавляем ссылку в DOM и эмулируем клик
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+
+            // Удаляем ссылку из DOM после скачивания
+            document.body.removeChild(downloadLink);
+        });
+    </script>
 
 </body>
 </html>
