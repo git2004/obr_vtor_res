@@ -38,6 +38,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-bottom: 10px; /* Добавляем отступ между кнопками */
         }
         button:hover {
             background-color: #0056b3;
@@ -89,8 +90,8 @@
             const collectionPlace = document.getElementById('collection-place').value;
             const hazardClass = document.getElementById('hazard-class').value;
 
-            // Формируем строку данных через запятую
-            const newData = `${resourceName}, ${resourceVolume}, ${collectionPlace}, ${hazardClass}\n`; // Добавляем символ новой строки
+            // Формируем строку данных через запятую и добавляем символ новой строки
+            const newData = `${resourceName}, ${resourceVolume}, ${collectionPlace}, ${hazardClass}\n`;
 
             // Получаем существующие данные из localStorage
             let existingData = localStorage.getItem('resourceData');
@@ -101,11 +102,11 @@
 
             // Создаем элемент <a> для скачивания
             const downloadLink = document.createElement('a');
-            downloadLink.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(existingData + newData);
+            downloadLink.href = 'data:text/plain;charset=utf-8,' + encode URIComponent(existingData + newData);
             downloadLink.download = 'resource_data.txt';
 
             // Добавляем ссылку в DOM и эмулируем клик
-            document.body.appendChild (downloadLink);
+            document.body.appendChild(downloadLink);
             downloadLink.click();
 
             // Удаляем ссылку из DOM после скачивания
