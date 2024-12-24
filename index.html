@@ -38,7 +38,6 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-bottom: 10px; /* Добавляем отступ между кнопками */
         }
         button:hover {
             background-color: #0056b3;
@@ -58,16 +57,16 @@
     </p>
     <form id="resourceForm">
         <label for="resource-name">Наименование ресурса:</label>
-        <input type="text" id="resource-name" name="resource-name" placeholder="Введите наименование ресурса" required>
+        <input type="text" id="resource-name" name="resource-name" placeholder="Введите наименование ресурса">
 
         <label for="resource-volume">Объем ресурса:</label>
-        <input type="text" id="resource-volume" name="resource-volume" placeholder="Введите объем ресурса" required>
+        <input type="text" id="resource-volume" name="resource-volume" placeholder="Введите объем ресурса">
 
         <label for="collection-place">Место сбора:</label>
-        <input type="text" id="collection-place" name="collection-place" placeholder="Введите место сбора" required>
+        <input type="text" id="collection-place" name="collection-place" placeholder="Введите место сбора">
 
         <label for="hazard-class">Класс опасности:</label>
-        <input type="text" id="hazard-class" name="hazard-class" placeholder="Введите класс опасности" required>
+        <input type="text" id="hazard-class" name="hazard-class" placeholder="Введите класс опасности">
 
         <button type="submit">Отправить</button>
         <button type="button" id="clearData">Очистить данные</button> <!-- Кнопка для очистки данных -->
@@ -90,8 +89,8 @@
             const collectionPlace = document.getElementById('collection-place').value;
             const hazardClass = document.getElementById('hazard-class').value;
 
-            // Формируем строку данных через запятую и добавляем символ новой строки
- const newData = `${resourceName}, ${resourceVolume}, ${collectionPlace}, ${hazardClass}\n`;
+            // Формируем строку данных через запятую
+            const newData = `${resourceName}, ${resourceVolume}, ${collectionPlace}, ${hazardClass}\n`; // Добавляем символ новой строки
 
             // Получаем существующие данные из localStorage
             let existingData = localStorage.getItem('resourceData');
@@ -106,7 +105,7 @@
             downloadLink.download = 'resource_data.txt';
 
             // Добавляем ссылку в DOM и эмулируем клик
-            document.body.appendChild(downloadLink);
+            document.body.appendChild (downloadLink);
             downloadLink.click();
 
             // Удаляем ссылку из DOM после скачивания
