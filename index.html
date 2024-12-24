@@ -88,11 +88,11 @@
             const hazardClass = document.getElementById('hazard-class').value;
 
             // Формируем строку данных через запятую
-            const newData = `${resourceName}, ${resourceVolume}, ${collectionPlace}, ${hazardClass}`;
+            const newData = `${resourceName}, ${resourceVolume}, ${collectionPlace}, ${hazardClass}\n`; // Добавляем символ новой строки
 
             // Получаем существующие данные из localStorage
             let existingData = localStorage.getItem('resourceData');
-            existingData = existingData ? existingData + '\n' : ''; // Добавляем новую строку, если данные уже есть
+            existingData = existingData ? existingData : ''; // Если данных нет, оставляем пустую строку
 
             // Сохраняем новые данные в localStorage
             localStorage.setItem('resourceData', existingData + newData);
