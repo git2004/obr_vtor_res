@@ -95,7 +95,7 @@
             existingData = existingData ? existingData : ''; // Если данных нет, оставляем пустую строку
 
             // Определяем номер следующего набора данных
-            const entries = existingData.trim().split('\n').filter(entry => entry); // Убираем пустые строки
+            const entries = existingData.trim().split('\r\n').filter(entry => entry); // Убираем пустые строки
             const nextIndex = entries.length + 1; // Нумерация начинается с 1
 
             // Формируем строку данных с нумерацией и символом ;
