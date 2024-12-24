@@ -58,16 +58,16 @@
     </p>
     <form id="resourceForm">
         <label for="resource-name">Наименование ресурса:</label>
-        <input type="text" id="resource-name" name="resource-name" placeholder="Введите наименование ресурса">
+        <input type="text" id="resource-name" name="resource-name" placeholder="Введите наименование ресурса" required>
 
         <label for="resource-volume">Объем ресурса:</label>
-        <input type="text" id="resource-volume" name="resource-volume" placeholder="Введите объем ресурса">
+        <input type="text" id="resource-volume" name="resource-volume" placeholder="Введите объем ресурса" required>
 
         <label for="collection-place">Место сбора:</label>
-        <input type="text" id="collection-place" name="collection-place" placeholder="Введите место сбора">
+        <input type="text" id="collection-place" name="collection-place" placeholder="Введите место сбора" required>
 
         <label for="hazard-class">Класс опасности:</label>
-        <input type="text" id="hazard-class" name="hazard-class" placeholder="Введите класс опасности">
+        <input type="text" id="hazard-class" name="hazard-class" placeholder="Введите класс опасности" required>
 
         <button type="submit">Отправить</button>
         <button type="button" id="clearData">Очистить данные</button> <!-- Кнопка для очистки данных -->
@@ -91,7 +91,7 @@
             const hazardClass = document.getElementById('hazard-class').value;
 
             // Формируем строку данных через запятую и добавляем символ новой строки
-            const newData = `${resourceName}, ${resourceVolume}, ${collectionPlace}, ${hazardClass}\n`;
+ const newData = `${resourceName}, ${resourceVolume}, ${collectionPlace}, ${hazardClass}\n`;
 
             // Получаем существующие данные из localStorage
             let existingData = localStorage.getItem('resourceData');
@@ -102,7 +102,7 @@
 
             // Создаем элемент <a> для скачивания
             const downloadLink = document.createElement('a');
-            downloadLink.href = 'data:text/plain;charset=utf-8,' + encode URIComponent(existingData + newData);
+            downloadLink.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(existingData + newData);
             downloadLink.download = 'resource_data.txt';
 
             // Добавляем ссылку в DOM и эмулируем клик
