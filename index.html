@@ -38,6 +38,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-bottom: 10px; /* Добавляем отступ между кнопками */
         }
         button:hover {
             background-color: #0056b3;
@@ -89,12 +90,14 @@
             const collectionPlace = document.getElementById('collection-place').value;
             const hazardClass = document.getElementById('hazard-class').value;
 
-            // Формируем строку данных через запятую
-            const newData = `${resourceName}, ${resourceVolume}, ${collectionPlace}, ${hazardClass}\n`; // Добавляем символ новой строки
-
             // Получаем существующие данные из localStorage
             let existingData = localStorage.getItem('resourceData');
             existingData = existingData ? existingData : ''; // Если данных нет, оставляем пустую строку
+
+            // Определяем номер следующего набора данных
+            const nextIndex = (existingData.split('\n').length + 1);
+            // Формируем строку данных с нумерацией и символом ;
+            const newData = `${nextIndex}) ${resourceName}, ${resourceVolume}, ${collectionPlace}, ${hazardClass};\n`;
 
             // Сохраняем новые данные в localStorage
             localStorage.setItem('resourceData', existingData + newData);
@@ -105,7 +108,7 @@
             downloadLink.download = 'resource_data.txt';
 
             // Добавляем ссылку в DOM и эмулируем клик
-            document.body.appendChild (downloadLink);
+            document.body.appendChild(downloadLink);
             downloadLink.click();
 
             // Удаляем ссылку из DOM после скачивания
