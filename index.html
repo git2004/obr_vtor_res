@@ -69,6 +69,7 @@
         <input type="text" id="hazard-class" name="hazard-class" placeholder="Введите класс опасности">
 
         <button type="submit">Отправить</button>
+        <button type="button" id="clearData">Очистить данные</button> <!-- Кнопка для очистки данных -->
     </form>
 
     <footer>
@@ -78,6 +79,7 @@
 
     <script>
         const form = document.getElementById('resourceForm');
+        const clearDataButton = document.getElementById('clearData');
 
         form.addEventListener('submit', function (event) {
             event.preventDefault(); // Предотвращаем отправку формы по умолчанию
@@ -103,7 +105,7 @@
             downloadLink.download = 'resource_data.txt';
 
             // Добавляем ссылку в DOM и эмулируем клик
-            document.body.appendChild(downloadLink);
+            document.body.appendChild (downloadLink);
             downloadLink.click();
 
             // Удаляем ссылку из DOM после скачивания
@@ -111,6 +113,12 @@
 
             // Очищаем поля формы после отправки
             form.reset();
+        });
+
+        clearDataButton.addEventListener('click', function () {
+            // Очищаем данные из localStorage
+            localStorage.removeItem('resourceData');
+            alert('Данные успешно очищены!'); // Уведомление об успешной очистке
         });
     </script>
 
