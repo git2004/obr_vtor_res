@@ -99,7 +99,7 @@
             const nextIndex = entries.length + 1; // Нумерация начинается с 1
 
             // Формируем строку данных с нумерацией и символом ;
-            const newData = `${nextIndex}) ${resourceName}, ${resourceVolume}, ${collectionPlace}, ${hazardClass};\n`;
+            const newData = `${nextIndex}) ${resourceName}, ${resourceVolume}, ${collectionPlace}, ${hazardClass};\r\n`;
 
             // Сохраняем новые данные в localStorage
             localStorage.setItem('resourceData', existingData + newData);
