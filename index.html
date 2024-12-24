@@ -87,7 +87,15 @@
             const collectionPlace = document.getElementById('collection-place').value;
             const hazardClass = document.getElementById('hazard-class').value;
 
-           const textData = `Наименование ресурса: ${resourceName}\nОбъем ресурса: ${resourceVolume}\nМесто сбора: ${collectionPlace}\nКласс опасности: ${hazardClass}`;
+            // Получаем существующие данные из localStorage
+            let existingData = localStorage.getItem('resourceData');
+            existingData = existingData ? existingData + '\n' : ''; // Добавляем новую строку, если данные уже есть
+
+            // Формируем текст для записи
+            const textData = `${existingData}Наименование ресурса: ${resourceName}\nОбъем ресурса: ${resourceVolume}\nМесто сбора: ${collectionPlace}\nКласс опасности: ${hazardClass}`;
+
+            // Сохраняем данные в localStorage
+            localStorage.setItem('resourceData', textData);
 
             // Создаем элемент <a> для скачивания
             const downloadLink = document.createElement('a');
